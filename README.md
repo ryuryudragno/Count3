@@ -11,7 +11,7 @@
 
 ## 仕様
 
-https://l4s8-count.herokuapp.com/ <br>
+https://la-count-adv.herokuapp.com/ <br>
 このアプリケーションを実装してください
 
 ### カウンター新規作成機能
