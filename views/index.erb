@@ -7,12 +7,40 @@
     <link rel="stylesheet" href="/assets/css/count.css">
   </head>
   <body>
-    <h1><%= @number %></h1>
-    <form action="/plus" method="post">
-      <input type="submit" value="+">
+    <form action="/new" method="post">
+        <input type="submit" value="New Counter">
     </form>
-    <form action="/minus" method="post">
-      <input type="submit" value="-">
-    </form>
+    <% @counters.each do |counter| %>
+      <h1 style = "
+				<% if counter.number % 15 == 0 && counter.number != 0 %>
+					color:#2a6d39;
+				<% elsif counter.number % 5 == 0 && counter.number != 0%>
+					color:#ec6c1f;
+				<% elsif counter.number % 3 == 0 && counter.number != 0%>
+				  color:#d01026;
+				  border-color:#f8b516;
+				<% end %>
+				
+				<% if counter.number.to_s.include?("3") %>
+				  border-color:#f8b516;
+				<% end %>
+				
+      "><%= counter.number %></h1>
+      <%#<%= counter.id %><%# これは1.2を表す%>
+      <form action="/plus/<%= counter.id %>" method="post">
+        <input type="submit" value="+">
+      </form>
+      <form action="/minus/<%= counter.id %>" method="post">
+        <input type="submit" value="-">
+      </form>
+      <form action="/clear/<%= counter.id %>" method="post">
+        <input type="submit" value="clear">
+      </form>
+      <form action="/delete/<%= counter.id %>" method="post">
+        <input type="submit" value="delete">
+      </form>
+    <% end %>
+    <%#<% end %>
+    
   </body>
 </html>
